@@ -1,0 +1,142 @@
+$def with (agent, clicks, dev, s, graphurl)
+
+<!DOCTYPE html>
+<html>
+			<link rel="icon" 
+      type="image/ico" 
+      href="https://sjurl.repl.co/static/images/favicon.ico">
+	<style>
+		body {
+			padding-left: 15px;
+			padding-right: 15px;
+		}
+		table, th, td {
+  border: 1px solid black;
+}
+th, td {
+	padding: 15px;
+}
+	</style>
+
+	<script>
+		function generate() {
+			clicks = document.getElementById('clicks').checked
+			table = document.getElementById('table').checked
+			agents = document.getElementById('agents').checked
+			times = document.getElementById('times').checked
+			graph = document.getElementById('graph').checked
+			clickval = ""
+			tableval = ""
+			agentsval = ""
+			timesval = ""
+			graphval = ""
+			if (clicks) {
+				clickval = "221"
+			}
+			if (table) {
+				tableval = "324"
+			}
+			if (agents) {
+				agentsval = "239"
+			}
+			if (times) {
+				timesval = "692"
+			}
+			if (graph) {
+				graphval = "734"
+			}
+			url = "https://sjurl.tk/info/" + "$s" + "/" + clickval + tableval + agentsval + timesval + graphval
+			document.getElementById('link').value = url
+		}
+	</script>
+	<head>
+	<head>
+		<link rel="stylesheet" href="https://minimalist.coolcodersj.repl.co/style.css">
+		<title>URL Shortener</title>
+	</head>
+
+	<body>
+				<div class="topnav text">
+		<a class="brand" href="#">SJURL</a>
+		<div class="topnavitem">
+		 <a class="topnavitem active" href="/">Home</a>
+  <a class="topnavitem" href="/add">Add Link</a>
+    <a class="topnavitem" href="/login">Login</a>
+  <a class="topnavitem" href="/signup">Signup</a>
+ 
+  </div>
+</div> 
+<br>
+<h3>Share this page</h3>
+<p>Generate a URL by selecting the options below.</p>
+<input type='checkbox' id='clicks'></input>
+<label class="text">Show total clicks</label>
+<br>
+<input type='checkbox' id='table'></input>
+<label class="text">Show table overview</label>
+<br>
+<input type='checkbox' id='agents'></input>
+<label class="text">Show user agents</label>
+<br>
+<input type='checkbox' id='times'></input>
+<label class="text">Show times clicked</label>
+<br>
+<input type='checkbox' id='graph'></input>
+<label class="text">Show graph</label>
+<br><br>
+<button onclick="generate()">Generate Link to share</button>
+<input id='link' class="input" value="" readonly>
+<br><br>
+<h4 class="h5">Clicks Received - $clicks</h4>
+<br>
+<table class="text">
+	<caption>Device Overview</caption>
+	<tr>
+		<th>Chrome</th>
+		<th>Firefox</th>
+		<th>Safari</th>
+		<th>Opera</th>
+		<th>Edge</th>
+		<th>Mac</th>
+		<th>iPad</th>
+		<th>Android</th>
+		<th>Windows 7</th>
+		<th>Windows 10</th>
+		<th>Apple</th>
+		<th>Linux</th>
+		<th>Chrome OS</th>
+	</tr>
+	<tr>
+		<td>$dev[0]</td>
+		<td>$dev[1]</td>
+		<td>$dev[2]</td>
+		<td>$dev[3]</td>
+		<td>$dev[4]</td>
+		<td>$dev[5]</td>
+		<td>$dev[6]</td>
+		<td>$dev[7]</td>
+		<td>$dev[8]</td>
+		<td>$dev[9]</td>
+		<td>$dev[10]</td>
+		<td>$dev[11]</td>
+		<td>$dev[12]</td>
+	</tr>
+</table>
+<br>
+<br>
+<center>
+<img src="$graphurl">
+</center>
+<br>
+<br>
+		<h4 class="h4">User Agents Used When Accessing this Link:</h4>
+		<br>
+		<ul>
+		$for short in agent:
+			<li>
+				<p class="card-text">$short</p>	
+				<br>
+			</li>
+		</ul>				
+	</body>
+</html>
